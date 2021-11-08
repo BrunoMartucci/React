@@ -1,23 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
+import { Home } from './views/Home/';
+import { Listar } from './views/Cliente/Listar/';
+import { ListarP } from './views/Pedido/ListarCompras';
+import { ListarS } from './Servico/ListarProduto';
+import { Menu } from './components/Menu';
+import { Item} from './Produto/Item';
+import { Cadastrar } from './Servico/Cadastrar';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Router>
+        <Menu/>
+        <Switch>
+          <Route exact path="/" component={Home}/>
+          <Route  path="/listar-cliente" component={Listar}/>
+          <Route  path="/listar-compra" component={ListarP}/> 
+          <Route  path="/listar-produto" component={ListarS}/>
+          <Route  path="/listar-compra/:id" component={Item}/>
+          <Route  patch="/cadastrarproduto" component={Cadastrar}/>
+        </Switch>
+      </Router>
+
     </div>
   );
 }
